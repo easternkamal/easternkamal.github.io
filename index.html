@@ -69,6 +69,23 @@
     .converter-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
     .tool-note { color:var(--muted); font-size:.88rem; margin:14px 0 0; }
 
+    .date-tools { background:#f0f4ff; }
+    .date-converter-panel { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:0 8px 30px #17233b08; }
+    .date-converter-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:end; }
+    .date-converter-grid .field input { width:100%; padding:13px 14px; border:1px solid #d0d7e5; border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
+    .date-result { margin-top:18px; padding:18px; border-radius:12px; background:#eef3ff; color:var(--ink); min-height:72px; overflow-wrap:anywhere; }
+    .date-result strong { display:block; color:var(--blue); margin-bottom:4px; }
+    @media (max-width:720px) { .date-converter-grid { grid-template-columns:1fr; } }
+    .land-tools { background:#fff; }
+    .land-converter-panel { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:0 8px 30px #17233b08; }
+    .land-converter-grid { display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:16px; align-items:end; }
+    .land-converter-grid .field input, .land-converter-grid .field select { width:100%; padding:13px 14px; border:1px solid #d0d7e5; border-radius:10px; background:#fff; color:var(--ink); font:inherit; }
+    .land-output { margin-top:18px; padding:18px; border-radius:12px; background:#eef3ff; overflow-wrap:anywhere; }
+    .land-output strong { display:block; color:var(--blue); font-size:1.2rem; margin-bottom:4px; }
+    .land-reference { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:16px; }
+    .land-reference div { padding:12px; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    .land-reference b { display:block; color:var(--blue); }
+    @media (max-width:720px) { .land-converter-grid { grid-template-columns:1fr; } .land-reference { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     .pdf-tools { background: #f0f4ff; }
     .pdf-panel { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:0 8px 30px #17233b08; }
     .pdf-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
@@ -109,7 +126,7 @@
     <nav class="wrap" aria-label="Main navigation">
       <a class="brand" href="#home">KP<span>.</span></a>
       <div class="navlinks">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#emi">EMI Calculator</a><a href="#unicode">Nepali Tools</a><a href="#pdf-tools">PDF Tools</a><a href="#contact">Contact</a>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#emi">EMI Calculator</a><a href="#unicode">Nepali Tools</a><a href="#date-converter">Date Converter</a><a href="#land-converter">Land Converter</a><a href="#pdf-tools">PDF Tools</a><a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -236,6 +253,96 @@
     </section>
 
 
+
+
+    <section class="date-tools" id="date-converter">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Calendar utility</div>
+          <h2>English ↔ Nepali date converter</h2>
+          <p class="sub">Convert Gregorian (AD) dates to Bikram Sambat (BS) dates and convert BS dates back to AD.</p>
+        </div>
+        <div class="date-converter-panel">
+          <div class="converter-controls">
+            <div class="mode-switch" role="group" aria-label="Date conversion direction">
+              <button class="mode-btn active" id="adToBsMode" type="button" aria-pressed="true">English (AD) → Nepali (BS)</button>
+              <button class="mode-btn" id="bsToAdMode" type="button" aria-pressed="false">Nepali (BS) → English (AD)</button>
+            </div>
+          </div>
+          <div class="date-converter-grid">
+            <div class="field">
+              <label for="dateInput">Select date</label>
+              <input id="dateInput" type="date">
+            </div>
+            <div class="field" id="bsDateFields" hidden>
+              <label for="bsDateInput">Enter Nepali date (YYYY-MM-DD)</label>
+              <input id="bsDateInput" type="text" inputmode="numeric" placeholder="2083-08-03" pattern="\\d{4}-\\d{2}-\\d{2}">
+            </div>
+          </div>
+          <div class="converter-actions">
+            <button class="btn primary" id="convertDateBtn" type="button">Convert date</button>
+            <button class="btn secondary" id="todayDateBtn" type="button">Use today</button>
+            <button class="btn secondary" id="clearDateBtn" type="button">Clear</button>
+          </div>
+          <div class="date-result" id="dateResult" aria-live="polite">
+            <strong>Converted date will appear here</strong>
+            Choose a date and select Convert date.
+          </div>
+          <p class="tool-note">Date conversion uses the Nepali Date Converter library and requires an internet connection to load the calendar data. For official banking, legal or government documents, verify the converted date against an official Nepali calendar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="land-tools" id="land-converter">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Nepal land measurement utility</div>
+          <h2>Nepali land unit converter</h2>
+          <p class="sub">Convert between Ropani–Aana–Paisa–Daam and Bigha–Kattha–Dhur, as well as square metres and square feet.</p>
+        </div>
+        <div class="land-converter-panel">
+          <div class="land-converter-grid">
+            <div class="field">
+              <label for="landValue">Enter land area</label>
+              <input id="landValue" type="number" min="0" step="any" value="1" placeholder="Enter value" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="landFrom">Convert from</label>
+              <select id="landFrom">
+                <option value="ropani">Ropani</option><option value="aana">Aana</option><option value="paisa">Paisa</option><option value="daam">Daam</option>
+                <option value="bigha">Bigha</option><option value="kattha">Kattha</option><option value="dhur">Dhur</option><option value="sqm">Square metre (m²)</option><option value="sqft">Square feet (ft²)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="landTo">Convert to</label>
+              <select id="landTo">
+                <option value="aana">Aana</option><option value="ropani">Ropani</option><option value="paisa">Paisa</option><option value="daam">Daam</option>
+                <option value="bigha">Bigha</option><option value="kattha">Kattha</option><option value="dhur">Dhur</option><option value="sqm">Square metre (m²)</option><option value="sqft">Square feet (ft²)</option>
+              </select>
+            </div>
+          </div>
+          <div class="converter-actions">
+            <button class="btn primary" id="convertLandBtn" type="button">Convert land area</button>
+            <button class="btn secondary" id="swapLandBtn" type="button">Swap units</button>
+            <button class="btn secondary" id="clearLandBtn" type="button">Clear</button>
+          </div>
+          <div class="land-output" id="landResult" aria-live="polite"><strong>1 Ropani = 16 Aana</strong>Enter an area and choose units to convert.</div>
+          <h3 style="margin:22px 0 8px">Nepal land measurement reference</h3>
+          <div class="land-reference">
+            <div><b>1 Ropani</b><span>16 Aana</span></div>
+            <div><b>1 Aana</b><span>4 Paisa</span></div>
+            <div><b>1 Paisa</b><span>4 Daam</span></div>
+            <div><b>1 Bigha</b><span>20 Kattha</span></div>
+            <div><b>1 Kattha</b><span>20 Dhur</span></div>
+            <div><b>1 Ropani</b><span>≈ 508.737 m²</span></div>
+            <div><b>1 Bigha</b><span>≈ 6,772.63 m²</span></div>
+            <div><b>1 Kattha</b><span>≈ 338.6315 m²</span></div>
+          </div>
+          <p class="tool-note">Conversions use commonly accepted Nepal land-area equivalents. Local records and cadastral measurements may use rounded or jurisdiction-specific figures; verify the official area for land transactions and legal documents.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="pdf-tools" id="pdf-tools">
       <div class="wrap">
         <div class="section-head">
@@ -326,6 +433,7 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter@3.4.2/dist/nepali-date-converter.umd.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     const money = value => new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(Math.round(value));
@@ -429,6 +537,121 @@
       catch { outputBox.focus(); outputBox.select(); button.textContent='Select and copy'; }
       setTimeout(()=>button.textContent='Copy output',1600);
     });
+
+
+    // English (AD) <-> Nepali (BS) date converter.
+    let dateMode = "ad-to-bs";
+    const dateResult = document.getElementById("dateResult");
+    const dateInput = document.getElementById("dateInput");
+    const bsDateInput = document.getElementById("bsDateInput");
+    const monthNames = ["Baisakh","Jestha","Asar","Shrawan","Bhadra","Ashwin","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra"];
+    function showDateResult(title, detail) {
+      dateResult.replaceChildren();
+      const heading = document.createElement("strong");
+      heading.textContent = title;
+      const line = document.createElement("span");
+      line.textContent = detail;
+      dateResult.append(heading, line);
+    }
+    function setDateMode(mode) {
+      dateMode = mode;
+      const adMode = mode === "ad-to-bs";
+      document.getElementById("adToBsMode").classList.toggle("active", adMode);
+      document.getElementById("bsToAdMode").classList.toggle("active", !adMode);
+      document.getElementById("adToBsMode").setAttribute("aria-pressed", String(adMode));
+      document.getElementById("bsToAdMode").setAttribute("aria-pressed", String(!adMode));
+      dateInput.parentElement.hidden = !adMode;
+      document.getElementById("bsDateFields").hidden = adMode;
+      showDateResult("Converted date will appear here", "Choose a date and select Convert date.");
+    }
+    function convertDate() {
+      try {
+        if (typeof NepaliDate === "undefined") throw new Error("Date library did not load. Check your internet connection and reload the page.");
+        if (dateMode === "ad-to-bs") {
+          if (!dateInput.value) throw new Error("Please select an English (AD) date.");
+          const [year, month, day] = dateInput.value.split("-").map(Number);
+          const ad = new Date(year, month - 1, day);
+          if (ad.getFullYear() !== year || ad.getMonth() !== month - 1 || ad.getDate() !== day) throw new Error("Please enter a valid date.");
+          const bs = new NepaliDate(ad).getBS();
+          const bsText = `${bs.year}-${String(bs.month + 1).padStart(2,"0")}-${String(bs.date).padStart(2,"0")}`;
+          showDateResult("Nepali date (Bikram Sambat)", `${bsText} (${bs.date} ${monthNames[bs.month]} ${bs.year})`);
+        } else {
+          const match = bsDateInput.value.trim().match(/^(\\d{4})-(\\d{1,2})-(\\d{1,2})$/);
+          if (!match) throw new Error("Enter the Nepali date as YYYY-MM-DD, for example 2083-08-03.");
+          const year = Number(match[1]), month = Number(match[2]), day = Number(match[3]);
+          if (month < 1 || month > 12 || day < 1 || day > 32) throw new Error("Please enter a valid Nepali date.");
+          const nepaliDate = new NepaliDate(year, month - 1, day);
+          const check = nepaliDate.getBS();
+          if (check.year !== year || check.month !== month - 1 || check.date !== day) throw new Error("That day does not exist in the selected Nepali month.");
+          const converted = nepaliDate.toJsDate();
+          if (!(converted instanceof Date) || Number.isNaN(converted.getTime())) throw new Error("This Nepali date is outside the supported calendar data.");
+          const adText = `${converted.getFullYear()}-${String(converted.getMonth()+1).padStart(2,"0")}-${String(converted.getDate()).padStart(2,"0")}`;
+          showDateResult("English date (Gregorian)", adText);
+        }
+      } catch (error) {
+        showDateResult("Unable to convert date", error.message || "Please check the date and try again.");
+      }
+    }
+    document.getElementById("adToBsMode").addEventListener("click", () => setDateMode("ad-to-bs"));
+    document.getElementById("bsToAdMode").addEventListener("click", () => setDateMode("bs-to-ad"));
+    document.getElementById("convertDateBtn").addEventListener("click", convertDate);
+    document.getElementById("todayDateBtn").addEventListener("click", () => {
+      const now = new Date();
+      dateInput.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+      setDateMode("ad-to-bs");
+      convertDate();
+    });
+    document.getElementById("clearDateBtn").addEventListener("click", () => {
+      dateInput.value = "";
+      bsDateInput.value = "";
+      showDateResult("Converted date will appear here", "Choose a date and select Convert date.");
+    });
+    dateInput.addEventListener("change", () => { if (dateMode === "ad-to-bs") convertDate(); });
+    bsDateInput.addEventListener("input", () => { if (dateMode === "bs-to-ad" && /^\\d{4}-\\d{1,2}-\\d{1,2}$/.test(bsDateInput.value.trim())) convertDate(); });
+
+    // Nepal land-area converter. All units are normalized to square metres.
+    const landUnits = {
+      ropani: { label: "Ropani", sqm: 508.737 },
+      aana: { label: "Aana", sqm: 31.7960625 },
+      paisa: { label: "Paisa", sqm: 7.949015625 },
+      daam: { label: "Daam", sqm: 1.98725390625 },
+      bigha: { label: "Bigha", sqm: 6772.63 },
+      kattha: { label: "Kattha", sqm: 338.6315 },
+      dhur: { label: "Dhur", sqm: 16.931575 },
+      sqm: { label: "Square metres", sqm: 1 },
+      sqft: { label: "Square feet", sqm: 0.09290304 }
+    };
+    function convertLand() {
+      const value = Number(document.getElementById("landValue").value);
+      const from = document.getElementById("landFrom").value;
+      const to = document.getElementById("landTo").value;
+      const result = document.getElementById("landResult");
+      if (!Number.isFinite(value) || value < 0) {
+        result.replaceChildren();
+        const error = document.createElement("strong"); error.textContent = "Enter a valid non-negative area."; result.append(error); return;
+      }
+      const converted = value * landUnits[from].sqm / landUnits[to].sqm;
+      const formatted = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 6 }).format(converted);
+      result.replaceChildren();
+      const heading = document.createElement("strong");
+      heading.textContent = `${new Intl.NumberFormat("en-IN", {maximumFractionDigits:6}).format(value)} ${landUnits[from].label} = ${formatted} ${landUnits[to].label}`;
+      const detail = document.createElement("span");
+      detail.textContent = `Equivalent area: ${new Intl.NumberFormat("en-IN", {maximumFractionDigits:3}).format(value * landUnits[from].sqm)} square metres.`;
+      result.append(heading, detail);
+    }
+    document.getElementById("convertLandBtn").addEventListener("click", convertLand);
+    document.getElementById("landValue").addEventListener("input", convertLand);
+    document.getElementById("landFrom").addEventListener("change", convertLand);
+    document.getElementById("landTo").addEventListener("change", convertLand);
+    document.getElementById("swapLandBtn").addEventListener("click", () => {
+      const from = document.getElementById("landFrom"), to = document.getElementById("landTo");
+      [from.value, to.value] = [to.value, from.value]; convertLand();
+    });
+    document.getElementById("clearLandBtn").addEventListener("click", () => {
+      document.getElementById("landValue").value = "";
+      document.getElementById("landResult").textContent = "Enter an area and choose units to convert.";
+    });
+    convertLand();
 
     // Browser-based PDF utilities (PDF-Lib + PDF.js loaded from public CDNs).
     const pdfStatus = id => document.getElementById(id);
