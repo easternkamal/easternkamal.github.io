@@ -68,6 +68,20 @@
     .converter-grid textarea:focus { outline:3px solid #2457c526; border-color:var(--blue); }
     .converter-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
     .tool-note { color:var(--muted); font-size:.88rem; margin:14px 0 0; }
+
+    .pdf-tools { background: #f0f4ff; }
+    .pdf-panel { background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px; box-shadow:0 8px 30px #17233b08; }
+    .pdf-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .pdf-tool { border:1px solid var(--line); border-radius:14px; padding:20px; min-width:0; }
+    .pdf-tool h3 { margin:0 0 7px; font-size:1.08rem; }
+    .pdf-tool p { color:var(--muted); font-size:.9rem; margin:0 0 15px; }
+    .pdf-tool input[type=file], .pdf-tool input[type=text], .pdf-tool input[type=number] { width:100%; padding:11px; border:1px solid #d0d7e5; border-radius:9px; background:#fff; font:inherit; margin:5px 0 12px; }
+    .pdf-tool label { display:block; font-size:.88rem; font-weight:700; color:#344054; }
+    .pdf-tool .btn { cursor:pointer; font:inherit; }
+    .pdf-tool .btn:disabled { opacity:.55; cursor:not-allowed; }
+    .pdf-status { min-height:22px; margin-top:12px !important; font-size:.88rem !important; color:#2457c5 !important; overflow-wrap:anywhere; }
+    .pdf-note { color:var(--muted); font-size:.88rem; margin:16px 0 0; }
+    @media (max-width:720px) { .pdf-grid { grid-template-columns:1fr; } }
     .contact { background: #17233b; color: white; }
     .contact .sub { color: #c2ccdd; }
     .contact-card { margin-top: 28px; padding: 26px; border: 1px solid #ffffff26; background: #ffffff0b; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -95,7 +109,7 @@
     <nav class="wrap" aria-label="Main navigation">
       <a class="brand" href="#home">KP<span>.</span></a>
       <div class="navlinks">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#emi">EMI Calculator</a><a href="#unicode">Nepali Tools</a><a href="#contact">Contact</a>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#emi">EMI Calculator</a><a href="#unicode">Nepali Tools</a><a href="#pdf-tools">PDF Tools</a><a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -221,6 +235,64 @@
       </div>
     </section>
 
+
+    <section class="pdf-tools" id="pdf-tools">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Document utilities</div>
+          <h2>PDF tools</h2>
+          <p class="sub">Merge PDF files, extract selected pages, rotate pages and reduce PDF file size. Processing happens locally in your browser.</p>
+        </div>
+        <div class="pdf-panel">
+          <div class="pdf-grid">
+            <article class="pdf-tool">
+              <h3>Merge PDF files</h3>
+              <p>Combine multiple PDF files into one document. Files are merged in the order you select them.</p>
+              <label for="pdfMergeFiles">Choose PDF files</label>
+              <input id="pdfMergeFiles" type="file" accept="application/pdf,.pdf" multiple>
+              <button class="btn primary" id="pdfMergeBtn" type="button">Merge PDFs</button>
+              <p class="pdf-status" id="pdfMergeStatus" aria-live="polite"></p>
+            </article>
+            <article class="pdf-tool">
+              <h3>Extract / split PDF</h3>
+              <p>Save selected pages as a new PDF. Use page numbers and ranges, for example: 1-3, 5, 8-10.</p>
+              <label for="pdfExtractFile">Choose a PDF file</label>
+              <input id="pdfExtractFile" type="file" accept="application/pdf,.pdf">
+              <label for="pdfPageRange">Pages to extract</label>
+              <input id="pdfPageRange" type="text" placeholder="Example: 1-3, 5, 8-10">
+              <button class="btn primary" id="pdfExtractBtn" type="button">Extract pages</button>
+              <p class="pdf-status" id="pdfExtractStatus" aria-live="polite"></p>
+            </article>
+            <article class="pdf-tool">
+              <h3>Rotate PDF pages</h3>
+              <p>Rotate every page in the selected PDF by 90, 180 or 270 degrees.</p>
+              <label for="pdfRotateFile">Choose a PDF file</label>
+              <input id="pdfRotateFile" type="file" accept="application/pdf,.pdf">
+              <label for="pdfRotateAngle">Rotation angle</label>
+              <select id="pdfRotateAngle">
+                <option value="90">90° clockwise</option>
+                <option value="180">180°</option>
+                <option value="270">270° clockwise</option>
+              </select>
+              <button class="btn primary" id="pdfRotateBtn" type="button">Rotate PDF</button>
+              <p class="pdf-status" id="pdfRotateStatus" aria-live="polite"></p>
+            </article>
+            <article class="pdf-tool">
+              <h3>Compress PDF</h3>
+              <p>Reduce file size by converting pages to optimized images. This can remove selectable text, links, forms and accessibility data.</p>
+              <label for="pdfCompressFile">Choose a PDF file</label>
+              <input id="pdfCompressFile" type="file" accept="application/pdf,.pdf">
+              <label for="pdfTargetSize">Target file size (MB)</label>
+              <input id="pdfTargetSize" type="number" min="0.1" max="50" step="0.1" value="1">
+              <button class="btn primary" id="pdfCompressBtn" type="button">Compress PDF</button>
+              <p class="pdf-status" id="pdfCompressStatus" aria-live="polite"></p>
+            </article>
+          </div>
+          <p class="pdf-note">Privacy: files are processed in your browser and are not uploaded by these tools. Very large or password-protected PDFs may fail depending on your device memory and browser. Compression to a specific size is best-effort; the final size depends on the PDF contents.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="contact" id="contact">
       <div class="wrap">
         <div class="section-head">
@@ -252,6 +324,8 @@
       <span>Personal Portfolio</span>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     const money = value => new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(Math.round(value));
@@ -355,6 +429,123 @@
       catch { outputBox.focus(); outputBox.select(); button.textContent='Select and copy'; }
       setTimeout(()=>button.textContent='Copy output',1600);
     });
+
+    // Browser-based PDF utilities (PDF-Lib + PDF.js loaded from public CDNs).
+    const pdfStatus = id => document.getElementById(id);
+    const readPdf = async file => {
+      if (!file) throw new Error("Please choose a PDF file.");
+      if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) throw new Error("Please select a valid PDF file.");
+      return new Uint8Array(await file.arrayBuffer());
+    };
+    const savePdf = (bytes, filename) => {
+      const blob = new Blob([bytes], {type:"application/pdf"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    };
+    const safeName = file => file.name.replace(/\.pdf$/i, "") || "document";
+    async function runPdfTool(buttonId, statusId, task) {
+      const button = document.getElementById(buttonId), status = pdfStatus(statusId);
+      button.disabled = true; status.textContent = "Working…";
+      try { await task(); }
+      catch (err) { status.textContent = err && err.message ? err.message : "Could not process this PDF. Check that the file is valid and not password-protected."; }
+      finally { button.disabled = false; }
+    }
+
+    document.getElementById("pdfMergeBtn").addEventListener("click", () => runPdfTool("pdfMergeBtn","pdfMergeStatus", async () => {
+      const files = Array.from(document.getElementById("pdfMergeFiles").files || []);
+      if (files.length < 2) throw new Error("Select at least two PDF files.");
+      const merged = await PDFLib.PDFDocument.create();
+      for (const file of files) {
+        const source = await PDFLib.PDFDocument.load(await readPdf(file));
+        const pages = await merged.copyPages(source, source.getPageIndices());
+        pages.forEach(page => merged.addPage(page));
+      }
+      savePdf(await merged.save({useObjectStreams:true}), "merged-document.pdf");
+      pdfStatus("pdfMergeStatus").textContent = `Merged ${files.length} files successfully.`;
+    }));
+
+    function parsePageRanges(value, pageCount) {
+      if (!value.trim()) throw new Error("Enter the page numbers or ranges to extract.");
+      const selected = new Set();
+      for (const part of value.split(",")) {
+        const item = part.trim();
+        const match = item.match(/^(\d+)(?:\s*-\s*(\d+))?$/);
+        if (!match) throw new Error(`Invalid page range: ${item}`);
+        const start = Number(match[1]), end = Number(match[2] || match[1]);
+        if (start < 1 || end < start || end > pageCount) throw new Error(`Page range ${item} is outside 1-${pageCount}.`);
+        for (let n=start; n<=end; n++) selected.add(n-1);
+      }
+      return Array.from(selected).sort((a,b)=>a-b);
+    }
+    document.getElementById("pdfExtractBtn").addEventListener("click", () => runPdfTool("pdfExtractBtn","pdfExtractStatus", async () => {
+      const file = document.getElementById("pdfExtractFile").files[0];
+      const source = await PDFLib.PDFDocument.load(await readPdf(file));
+      const indices = parsePageRanges(document.getElementById("pdfPageRange").value, source.getPageCount());
+      const output = await PDFLib.PDFDocument.create();
+      const pages = await output.copyPages(source, indices);
+      pages.forEach(page => output.addPage(page));
+      savePdf(await output.save({useObjectStreams:true}), `${safeName(file)}-extracted.pdf`);
+      pdfStatus("pdfExtractStatus").textContent = `Extracted ${indices.length} page(s).`;
+    }));
+
+    document.getElementById("pdfRotateBtn").addEventListener("click", () => runPdfTool("pdfRotateBtn","pdfRotateStatus", async () => {
+      const file = document.getElementById("pdfRotateFile").files[0];
+      const doc = await PDFLib.PDFDocument.load(await readPdf(file));
+      const angle = Number(document.getElementById("pdfRotateAngle").value);
+      doc.getPages().forEach(page => page.setRotation(PDFLib.degrees((page.getRotation().angle + angle) % 360)));
+      savePdf(await doc.save({useObjectStreams:true}), `${safeName(file)}-rotated.pdf`);
+      pdfStatus("pdfRotateStatus").textContent = `Rotated ${doc.getPageCount()} page(s).`;
+    }));
+
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+    function canvasJpeg(canvas, quality) {
+      return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? blob.arrayBuffer().then(resolve).catch(reject) : reject(new Error("Could not encode a PDF page.")), "image/jpeg", quality));
+    }
+    document.getElementById("pdfCompressBtn").addEventListener("click", () => runPdfTool("pdfCompressBtn","pdfCompressStatus", async () => {
+      if (!window.pdfjsLib) throw new Error("PDF rendering library did not load. Check your internet connection and reload the page.");
+      const file = document.getElementById("pdfCompressFile").files[0];
+      const data = await readPdf(file);
+      const target = Number(document.getElementById("pdfTargetSize").value);
+      if (!Number.isFinite(target) || target < 0.1 || target > 50) throw new Error("Enter a target between 0.1 and 50 MB.");
+      const pdf = await pdfjsLib.getDocument({data}).promise;
+      const limit = target * 1024 * 1024;
+      const attempts = [{scale:1.25,quality:.72},{scale:1.05,quality:.58},{scale:.85,quality:.44},{scale:.7,quality:.32}];
+      let best = null, bestSize = Infinity;
+      for (const setting of attempts) {
+        const output = await PDFLib.PDFDocument.create();
+        for (let n=1; n<=pdf.numPages; n++) {
+          pdfStatus("pdfCompressStatus").textContent = `Optimizing page ${n} of ${pdf.numPages}…`;
+          const page = await pdf.getPage(n);
+          const original = page.getViewport({scale:1});
+          const viewport = page.getViewport({scale:setting.scale});
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.floor(viewport.width));
+          canvas.height = Math.max(1, Math.floor(viewport.height));
+          const context = canvas.getContext("2d", {alpha:false});
+          context.fillStyle = "#ffffff"; context.fillRect(0,0,canvas.width,canvas.height);
+          await page.render({canvasContext:context, viewport}).promise;
+          const jpg = await canvasJpeg(canvas, setting.quality);
+          const image = await output.embedJpg(jpg);
+          const outPage = output.addPage([original.width, original.height]);
+          outPage.drawImage(image, {x:0,y:0,width:original.width,height:original.height});
+          canvas.width = 1; canvas.height = 1;
+        }
+        const bytes = await output.save({useObjectStreams:true});
+        if (bytes.length < bestSize) { best = bytes; bestSize = bytes.length; }
+        if (bytes.length <= limit) break;
+      }
+      if (!best) throw new Error("Compression failed.");
+      savePdf(best, `${safeName(file)}-compressed.pdf`);
+      const actual = (bestSize / (1024*1024)).toFixed(2);
+      pdfStatus("pdfCompressStatus").textContent = bestSize <= limit
+        ? `Done: ${actual} MB (target ${target} MB). Note: pages are image-based after compression.`
+        : `Best result: ${actual} MB; target ${target} MB could not be reached. The PDF was still compressed as much as these settings allow.`;
+      await pdf.destroy();
+    }));
   </script>
 </body>
 </html>
