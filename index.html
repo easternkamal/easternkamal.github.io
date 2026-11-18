@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional portfolio of Kamal Paudel — banking operations, credit and customer service.">
+  <title>Kamal Paudel | Professional Portfolio</title>
+  <style>
+    :root {
+      --ink: #17233b; --muted: #667085; --blue: #2457c5; --pale: #eef3ff;
+      --line: #e6eaf0; --white: #fff; --bg: #f8faff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1080px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; gap: 28px; color: #475467; font-size: .94rem; }
+    .navlinks a:hover { color: var(--blue); }
+    .hero { padding: 92px 0 78px; background: radial-gradient(circle at 85% 20%, #dfe8ff 0, transparent 32%), linear-gradient(135deg,#fff 0%,#f4f7ff 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--blue); text-transform: uppercase; font-size: .78rem; font-weight: 800; letter-spacing: .15em; }
+    h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; letter-spacing: -.055em; margin: 14px 0 20px; }
+    .lead { color: var(--muted); font-size: 1.13rem; max-width: 650px; }
+    .actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 10px; font-weight: 700; border: 1px solid var(--blue); transition: .2s; }
+    .primary { background: var(--blue); color: white; box-shadow: 0 8px 20px #2457c52b; }
+    .primary:hover { transform: translateY(-2px); background: #1948ad; }
+    .secondary { color: var(--blue); background: white; }
+    .portrait { width: min(290px, 100%); aspect-ratio: 1; border-radius: 32px; background: linear-gradient(145deg,#dce6ff,#f7f9ff); border: 1px solid #d5def4; display: grid; place-items: center; margin: auto; box-shadow: 0 24px 60px #233c7418; }
+    .initials { width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; color: white; font-size: 3.3rem; font-weight: 800; letter-spacing: -.06em; background: linear-gradient(135deg,#2457c5,#6f91e8); }
+    section { padding: 78px 0; }
+    .section-head { max-width: 650px; margin-bottom: 34px; }
+    h2 { font-size: clamp(2rem,4vw,2.7rem); letter-spacing: -.045em; line-height: 1.15; margin: 8px 0 12px; }
+    .sub { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 26px; box-shadow: 0 8px 30px #17233b08; }
+    .panel h3 { margin: 0 0 10px; font-size: 1.12rem; }
+    .panel p { color: var(--muted); margin: 0; }
+    .focus { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .tag { background: var(--pale); color: #234da5; border-radius: 999px; padding: 7px 12px; font-size: .87rem; font-weight: 650; }
+    .calculator { background: #f0f4ff; }
+    .emi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .emi-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label { font-size: .9rem; font-weight: 700; color: #344054; }
+    .field input, .field select { width: 100%; padding: 13px 14px; border: 1px solid #d0d7e5; border-radius: 10px; background: #fff; color: var(--ink); font: inherit; }
+    .field input:focus, .field select:focus { outline: 3px solid #2457c526; border-color: var(--blue); }
+    .emi-results { background: #17233b; color: white; border-radius: 18px; padding: 26px; }
+    .emi-results .result-label { color: #c2ccdd; font-size: .9rem; }
+    .emi-main { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -.04em; margin: 5px 0 22px; }
+    .result-row { display: flex; justify-content: space-between; gap: 12px; padding: 13px 0; border-top: 1px solid #ffffff24; }
+    .result-row span:first-child { color: #c2ccdd; }
+    .emi-note { color: var(--muted); font-size: .88rem; margin: 16px 0 0; }
+    .unicode-tools { background: #fff; }
+    .converter-panel { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 26px; box-shadow: 0 8px 30px #17233b08; }
+    .converter-controls { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+    .mode-switch { display:flex; gap:8px; flex-wrap:wrap; }
+    .mode-btn { border:1px solid #d0d7e5; border-radius:10px; background:#fff; padding:10px 14px; color:var(--ink); font:inherit; font-weight:700; cursor:pointer; }
+    .mode-btn.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .converter-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .converter-grid label { display:block; font-size:.9rem; font-weight:700; color:#344054; margin-bottom:8px; }
+    .converter-grid textarea { width:100%; min-height:190px; resize:vertical; border:1px solid #d0d7e5; border-radius:12px; padding:14px; font:inherit; line-height:1.7; color:var(--ink); background:#fff; }
+    .converter-grid textarea:focus { outline:3px solid #2457c526; border-color:var(--blue); }
+    .converter-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+    .tool-note { color:var(--muted); font-size:.88rem; margin:14px 0 0; }
+    .contact { background: #17233b; color: white; }
+    .contact .sub { color: #c2ccdd; }
+    .contact-card { margin-top: 28px; padding: 26px; border: 1px solid #ffffff26; background: #ffffff0b; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .contact-card p { margin: 3px 0; color: #c2ccdd; }
+    .contact-card a { color: white; font-weight: 700; }
+    footer { padding: 22px 0; color: #98a2b3; font-size: .88rem; background: #111b2e; }
+    footer .wrap { display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap; }
+    @media (max-width: 720px) {
+      .navlinks { gap: 14px; font-size: .85rem; }
+      .hero { padding: 65px 0; }
+      .hero-grid, .about-grid, .emi-grid { grid-template-columns: 1fr; }
+      .emi-form { grid-template-columns: 1fr; }
+      .converter-grid { grid-template-columns: 1fr; }
+      .field[style] { grid-column: auto !important; }
+      .hero-grid { gap: 38px; }
+      .portrait { width: 210px; }
+      .initials { width: 112px; height: 112px; font-size: 2.5rem; }
+      section { padding: 60px 0; }
+    }
+    @media (max-width: 430px) { .navlinks { gap: 10px; } .navlinks a { font-size: .78rem; } .wrap { width: min(100% - 28px, 1080px); } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">KP<span>.</span></a>
+      <div class="navlinks">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#emi">EMI Calculator</a><a href="#unicode">Nepali Tools</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Professional Portfolio</div>
+          <h1>Hello, I'm<br>Kamal Paudel.</h1>
+          <p class="lead">Banking operations, credit and customer service — focused on practical solutions, trusted relationships and responsible business growth.</p>
+          <div class="actions">
+            <a class="btn primary" href="#contact">Get in touch</a>
+            <a class="btn secondary" href="#about">Learn more</a>
+          </div>
+        </div>
+        <div class="portrait" aria-label="Profile initials placeholder">
+          <div class="initials">KP</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Professional, practical and people-focused.</h2>
+          <p class="sub">A short introduction to my professional interests and the areas I work with.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>About me</h3>
+            <p>I am interested in banking and financial services, with a focus on smooth branch operations, sound credit practices and helpful customer experiences. I value integrity, continuous learning and clear communication.</p>
+          </article>
+          <article class="panel">
+            <h3>Areas of focus</h3>
+            <p>My professional interests include the following areas:</p>
+            <div class="focus">
+              <span class="tag">Banking operations</span>
+              <span class="tag">Credit & lending</span>
+              <span class="tag">Customer service</span>
+              <span class="tag">Business development</span>
+              <span class="tag">Digital banking</span>
+              <span class="tag">Risk awareness</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculator" id="emi">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Loan planning tool</div>
+          <h2>EMI calculator</h2>
+          <p class="sub">Estimate your monthly instalment, total interest and total repayment for a reducing-balance loan.</p>
+        </div>
+        <div class="emi-grid">
+          <div class="panel">
+            <div class="emi-form">
+              <div class="field" style="grid-column:1/-1">
+                <label for="loanAmount">Loan amount (NPR)</label>
+                <input id="loanAmount" type="number" min="1" step="1000" value="1000000" inputmode="decimal">
+              </div>
+              <div class="field">
+                <label for="interestRate">Annual interest rate (%)</label>
+                <input id="interestRate" type="number" min="0" max="100" step="0.01" value="10" inputmode="decimal">
+              </div>
+              <div class="field">
+                <label for="tenure">Loan tenure</label>
+                <input id="tenure" type="number" min="1" max="600" step="1" value="5" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="tenureUnit">Tenure unit</label>
+                <select id="tenureUnit"><option value="years" selected>Years</option><option value="months">Months</option></select>
+              </div>
+            </div>
+            <p class="emi-note">This is an indicative estimate. Actual instalments may vary due to bank fees, insurance, rate changes, payment dates and loan terms.</p>
+          </div>
+          <div class="emi-results" aria-live="polite" aria-atomic="true">
+            <div class="result-label">Estimated monthly EMI</div>
+            <div class="emi-main" id="emiAmount">NPR 21,247</div>
+            <div class="result-row"><span>Total interest</span><strong id="totalInterest">NPR 274,820</strong></div>
+            <div class="result-row"><span>Total repayment</span><strong id="totalPayment">NPR 1,274,820</strong></div>
+            <div class="result-row"><span>Number of instalments</span><strong id="installments">60</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="unicode-tools" id="unicode">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Nepali language utilities</div>
+          <h2>Nepali Unicode converter</h2>
+          <p class="sub">Type Nepali using English letters and convert it to Devanagari Unicode, or convert Unicode text back to a basic Roman transliteration.</p>
+        </div>
+        <div class="converter-panel">
+          <div class="converter-controls">
+            <div class="mode-switch" role="group" aria-label="Conversion direction">
+              <button class="mode-btn active" id="toUnicodeMode" type="button" aria-pressed="true">Romanized → Unicode</button>
+              <button class="mode-btn" id="toRomanMode" type="button" aria-pressed="false">Unicode → Romanized</button>
+            </div>
+            <span class="tag" id="modeHint">Example: namaste → नमस्ते</span>
+          </div>
+          <div class="converter-grid">
+            <div>
+              <label for="unicodeInput" id="inputLabel">Type in English (Romanized Nepali)</label>
+              <textarea id="unicodeInput" placeholder="Type here… e.g. namaste, mero naam Kamal ho"></textarea>
+            </div>
+            <div>
+              <label for="unicodeOutput" id="outputLabel">Nepali Unicode output</label>
+              <textarea id="unicodeOutput" readonly placeholder="Converted text will appear here…"></textarea>
+            </div>
+          </div>
+          <div class="converter-actions">
+            <button class="btn primary" id="convertText" type="button">Convert text</button>
+            <button class="btn secondary" id="copyUnicode" type="button">Copy output</button>
+            <button class="btn secondary" id="clearUnicode" type="button">Clear</button>
+          </div>
+          <p class="tool-note">This is a built-in, offline phonetic converter and does not send your text to a server. Romanized spelling can vary, so review the result before using it in official documents. It is not a legacy Preeti-font converter.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow" style="color:#9bb8ff">Contact</div>
+          <h2>Let's connect.</h2>
+          <p class="sub">Have a professional enquiry or would like to connect? Feel free to reach out.</p>
+        </div>
+        <div class="contact-card">
+          <div>
+            <strong>Email</strong>
+            <p>Replace this with your preferred email address.</p>
+          </div>
+          <a href="mailto:yourname@example.com">yourname@example.com</a>
+        </div>
+        <div class="contact-card">
+          <div>
+            <strong>Location</strong>
+            <p>Itahari, Koshi Province, Nepal</p>
+          </div>
+          <span>Available for professional connections</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Kamal Paudel. All rights reserved.</span>
+      <span>Personal Portfolio</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const money = value => new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(Math.round(value));
+    function calculateEMI() {
+      const principal = Number(document.getElementById("loanAmount").value);
+      const annualRate = Number(document.getElementById("interestRate").value);
+      const tenureValue = Number(document.getElementById("tenure").value);
+      const unit = document.getElementById("tenureUnit").value;
+      const months = unit === "years" ? tenureValue * 12 : tenureValue;
+      const valid = Number.isFinite(principal) && principal > 0 && Number.isFinite(annualRate) && annualRate >= 0 && annualRate <= 100 && Number.isFinite(months) && months >= 1 && months <= 600;
+      if (!valid) {
+        document.getElementById("emiAmount").textContent = "Enter valid values";
+        document.getElementById("totalInterest").textContent = "—";
+        document.getElementById("totalPayment").textContent = "—";
+        document.getElementById("installments").textContent = "—";
+        return;
+      }
+      const monthlyRate = annualRate / 12 / 100;
+      const emi = monthlyRate === 0 ? principal / months : principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+      const total = emi * months;
+      document.getElementById("emiAmount").textContent = "NPR " + money(emi);
+      document.getElementById("totalInterest").textContent = "NPR " + money(total - principal);
+      document.getElementById("totalPayment").textContent = "NPR " + money(total);
+      document.getElementById("installments").textContent = months;
+    }
+    ["loanAmount", "interestRate", "tenure", "tenureUnit"].forEach(id => document.getElementById(id).addEventListener("input", calculateEMI));
+    calculateEMI();
+
+    // Lightweight offline Romanized Nepali ↔ Unicode converter.
+    const romanToUnicode = {
+      vowels: { 'aa':'आ','a':'अ','ii':'ई','ee':'ई','i':'इ','uu':'ऊ','oo':'ऊ','u':'उ','ri':'ऋ','e':'ए','ai':'ऐ','o':'ओ','au':'औ' },
+      matras: { 'aa':'ा','a':'','ii':'ी','ee':'ी','i':'ि','uu':'ू','oo':'ू','u':'ु','ri':'ृ','e':'े','ai':'ै','o':'ो','au':'ौ' },
+      consonants: { 'ksh':'क्ष','chh':'छ','sh':'श','Sh':'ष','kh':'ख','gh':'घ','ng':'ङ','ch':'च','jh':'झ','ny':'ञ','Th':'ठ','Dh':'ढ','th':'थ','dh':'ध','ph':'फ','bh':'भ','Sh':'ष','K':'क','T':'ट','D':'ड','N':'ण','t':'त','d':'द','n':'न','p':'प','b':'ब','m':'म','y':'य','r':'र','l':'ल','w':'व','v':'व','s':'स','h':'ह','g':'ग','j':'ज','k':'क','f':'फ','q':'क','x':'क्ष' },
+      signs: { 'M':'ं','H':'ः','~':'ँ' }
+    };
+    const specialWords = { 'namaste':'नमस्ते','nepal':'नेपाल','nepali':'नेपाली','dhanyabad':'धन्यवाद','dhanyavaad':'धन्यवाद','kathmandu':'काठमाडौं','sanchai':'सञ्चै','mero':'मेरो','naam':'नाम','ho':'हो' };
+    const tokens = Object.keys({...romanToUnicode.consonants,...romanToUnicode.vowels,...romanToUnicode.signs}).sort((a,b)=>b.length-a.length);
+    function romanToDevanagari(text) {
+      return text.split(/([\s]+)/).map(part => {
+        if (!part || /^\s+$/.test(part)) return part;
+        const lower = part.toLowerCase();
+        if (specialWords[lower]) return specialWords[lower];
+        let out='', i=0;
+        while (i < part.length) {
+          const rest=part.slice(i); const token=tokens.find(t=>rest.startsWith(t));
+          if (!token) { out += part[i]; i++; continue; }
+          i += token.length;
+          if (romanToUnicode.consonants[token]) {
+            const next=tokens.find(t=>part.slice(i).startsWith(t));
+            if (next && Object.prototype.hasOwnProperty.call(romanToUnicode.matras,next)) { out += romanToUnicode.consonants[token] + romanToUnicode.matras[next]; i += next.length; }
+            else if (next && romanToUnicode.consonants[next]) out += romanToUnicode.consonants[token] + '्';
+            else out += romanToUnicode.consonants[token];
+          } else if (Object.prototype.hasOwnProperty.call(romanToUnicode.vowels,token)) out += romanToUnicode.vowels[token];
+          else out += romanToUnicode.signs[token] || token;
+        }
+        return out;
+      }).join('');
+    }
+    const unicodeToRomanMap = { 'अ':'a','आ':'aa','इ':'i','ई':'ii','उ':'u','ऊ':'uu','ऋ':'ri','ए':'e','ऐ':'ai','ओ':'o','औ':'au','क':'k','ख':'kh','ग':'g','घ':'gh','ङ':'ng','च':'ch','छ':'chh','ज':'j','झ':'jh','ञ':'ny','ट':'T','ठ':'Th','ड':'D','ढ':'Dh','ण':'N','त':'t','थ':'th','द':'d','ध':'dh','न':'n','प':'p','फ':'ph','ब':'b','भ':'bh','म':'m','य':'y','र':'r','ल':'l','व':'v','श':'sh','ष':'Sh','स':'s','ह':'h','क्ष':'ksh','त्र':'tra','ज्ञ':'gya','ं':'M','ः':'H','ँ':'~','ा':'aa','ि':'i','ी':'ii','ु':'u','ू':'uu','ृ':'ri','े':'e','ै':'ai','ो':'o','ौ':'au','्':'' };
+    function devanagariToRoman(text) {
+      const chars=Array.from(text); let out='';
+      for(let i=0;i<chars.length;i++) {
+        const ch=chars[i];
+        if (unicodeToRomanMap[ch] !== undefined) {
+          const base=unicodeToRomanMap[ch];
+          if (['क','ख','ग','घ','ङ','च','छ','ज','झ','ञ','ट','ठ','ड','ढ','ण','त','थ','द','ध','न','प','फ','ब','भ','म','य','र','ल','व','श','ष','स','ह'].includes(ch)) {
+            const next=chars[i+1];
+            if (next==='्') { out += base; i++; }
+            else if (next && unicodeToRomanMap[next] !== undefined && ['ा','ि','ी','ु','ू','ृ','े','ै','ो','ौ'].includes(next)) { out += base + unicodeToRomanMap[next]; i++; }
+            else out += base + 'a';
+          } else out += base;
+        } else out += ch;
+      }
+      return out;
+    }
+    let conversionMode='unicode';
+    const inputBox=document.getElementById('unicodeInput'), outputBox=document.getElementById('unicodeOutput');
+    function updateConverter() { outputBox.value = conversionMode==='unicode' ? romanToDevanagari(inputBox.value) : devanagariToRoman(inputBox.value); }
+    function setConversionMode(mode) {
+      conversionMode=mode;
+      const toUnicode=mode==='unicode';
+      document.getElementById('toUnicodeMode').classList.toggle('active',toUnicode);
+      document.getElementById('toRomanMode').classList.toggle('active',!toUnicode);
+      document.getElementById('toUnicodeMode').setAttribute('aria-pressed',String(toUnicode));
+      document.getElementById('toRomanMode').setAttribute('aria-pressed',String(!toUnicode));
+      document.getElementById('inputLabel').textContent=toUnicode?'Type in English (Romanized Nepali)':'Paste Nepali Unicode text';
+      document.getElementById('outputLabel').textContent=toUnicode?'Nepali Unicode output':'Romanized output';
+      document.getElementById('modeHint').textContent=toUnicode?'Example: namaste → नमस्ते':'Example: नमस्ते → namaste';
+      inputBox.placeholder=toUnicode?'Type here… e.g. namaste, mero naam Kamal ho':'यहाँ नेपाली Unicode text राख्नुहोस्…';
+      outputBox.value=''; updateConverter();
+    }
+    document.getElementById('toUnicodeMode').addEventListener('click',()=>setConversionMode('unicode'));
+    document.getElementById('toRomanMode').addEventListener('click',()=>setConversionMode('roman'));
+    inputBox.addEventListener('input',updateConverter);
+    document.getElementById('convertText').addEventListener('click',updateConverter);
+    document.getElementById('clearUnicode').addEventListener('click',()=>{inputBox.value='';outputBox.value='';inputBox.focus();});
+    document.getElementById('copyUnicode').addEventListener('click',async()=>{
+      if (!outputBox.value) return;
+      const button=document.getElementById('copyUnicode');
+      try { await navigator.clipboard.writeText(outputBox.value); button.textContent='Copied!'; }
+      catch { outputBox.focus(); outputBox.select(); button.textContent='Select and copy'; }
+      setTimeout(()=>button.textContent='Copy output',1600);
+    });
+  </script>
+</body>
+</html>
