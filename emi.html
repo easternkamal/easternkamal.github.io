@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>EMI Calculator | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="emi">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="emi">
+<div class="wrap">
+  <nav class="toolnav" aria-label="Tools"><a href="tools.html">All tools</a><a href="emi.html" aria-current="page">EMI</a><a href="nepali.html">Nepali Unicode</a><a href="date.html">Dates</a><a href="land.html">Land</a><a href="pdf.html">PDF</a><a href="gold.html">Gold</a><a href="qr.html">Bank QR</a></nav>
+  <div class="page-head">
+    <div class="eyebrow">Loan planning tool</div>
+    <h1>EMI calculator</h1>
+    <p class="lead">Estimate your monthly instalment, total interest and total repayment for a reducing-balance loan.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="emi">
+      <div class="card inputs">
+        <div class="pair">
+          <div class="field"><label for="loanAmountR">Loan amount (NPR)</label><input id="loanAmountR" type="range" min="50000" max="50000000" step="50000" value="1000000"></div>
+          <div class="field"><label for="loanAmount" class="lbl">Amount</label><input id="loanAmount" type="text" value="1,000,000" inputmode="decimal" autocomplete="off"></div>
+          <div class="hint" id="words" aria-live="polite"></div>
+        </div>
+        <div class="pair">
+          <div class="field"><label for="interestRateR">Annual interest rate (%)</label><input id="interestRateR" type="range" min="1" max="30" step="0.05" value="10"></div>
+          <div class="field"><label for="interestRate" class="lbl">Rate %</label><input id="interestRate" type="number" min="0" max="100" step="0.01" value="10" inputmode="decimal"></div>
+        </div>
+        <div class="pair">
+          <div class="field"><label for="tenureR">Loan tenure</label><input id="tenureR" type="range" min="1" max="30" step="1" value="5"></div>
+          <div class="field"><label for="tenure" class="lbl">Tenure</label><input id="tenure" type="number" min="1" max="600" step="1" value="5" inputmode="numeric"></div>
+        </div>
+        <div class="field"><label for="tenureUnit">Tenure unit</label><select id="tenureUnit"><option value="years" selected>Years</option><option value="months">Months</option></select></div>
+        <p class="note" style="margin:0">This is an indicative estimate. Actual instalments may vary due to bank fees, insurance, rate changes, payment dates and loan terms.</p>
+      </div>
+      <div class="card result" aria-live="polite" aria-atomic="false">
+        <div class="lab">Estimated monthly EMI</div>
+        <div class="big mono" id="emiAmount">NPR 21,247</div>
+        <div class="donut-row">
+          <svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Share of principal and interest in total repayment">
+            <g transform="rotate(-90 60 60)" fill="none" stroke-width="14">
+              <circle class="bg" cx="60" cy="60" r="52"/>
+              <circle class="p" id="dP" cx="60" cy="60" r="52" stroke-dasharray="0 327"/>
+              <circle class="i" id="dI" cx="60" cy="60" r="52" stroke-dasharray="0 327"/>
+            </g>
+            <text x="60" y="62" text-anchor="middle" id="donutPct">0%</text>
+            <text class="s" x="60" y="76" text-anchor="middle">interest</text>
+          </svg>
+          <div>
+            <div class="stat"><span><i class="dot" style="background:#7fa4ff"></i>Principal</span><strong class="mono" id="principalOut">-</strong></div>
+            <div class="stat"><span><i class="dot" style="background:#ffc766"></i>Total interest</span><strong class="mono" id="totalInterest">-</strong></div>
+            <div class="stat"><span>Total repayment</span><strong class="mono" id="totalPayment">-</strong></div>
+            <div class="stat"><span>Instalments</span><strong class="mono" id="installments">-</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="block" style="padding-top:0">
+    <div class="card">
+      <h3>Repayment over time</h3>
+      <div class="legend"><span><i class="dot" style="background:var(--accent)"></i> Outstanding balance</span><span><i class="dot" style="background:#e0a02e"></i> Cumulative interest paid</span></div>
+      <svg class="chart" id="chart" viewBox="0 0 560 230" role="img" aria-label="Outstanding balance and cumulative interest over the loan term"></svg>
+    </div>
+  </section>
+  <section class="block" style="padding-top:0">
+    <div class="card">
+      <div class="bar">
+        <h3 style="margin:0">Amortization schedule</h3>
+        <div class="seg" role="group" aria-label="Schedule detail">
+          <button type="button" data-sched="yearly" aria-pressed="true">Yearly</button>
+          <button type="button" data-sched="monthly" aria-pressed="false">Monthly</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table><thead id="schedHead"></thead><tbody id="schedBody"></tbody></table></div>
+      <p class="note">Amounts in NPR, rounded to the nearest rupee.</p>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

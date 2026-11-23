@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>PDF Tools | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="pdf">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="pdf">
+<div class="wrap">
+  <nav class="toolnav" aria-label="Tools"><a href="tools.html">All tools</a><a href="emi.html">EMI</a><a href="nepali.html">Nepali Unicode</a><a href="date.html">Dates</a><a href="land.html">Land</a><a href="pdf.html" aria-current="page">PDF</a><a href="gold.html">Gold</a><a href="qr.html">Bank QR</a></nav>
+  <div class="page-head">
+    <div class="eyebrow">Document utilities</div>
+    <h1>PDF tools</h1>
+    <p class="lead">Merge PDF files, extract selected pages, rotate pages and reduce PDF file size. Processing happens locally in your browser.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="pdfgrid">
+      <article class="card">
+        <h3>Merge PDF files</h3>
+        <p>Combine multiple PDF files into one document. Reorder the list with the arrows.</p>
+        <label class="drop" id="pdfMergeDrop">Drop PDFs here or click to choose<input id="pdfMergeFiles" type="file" accept="application/pdf,.pdf" multiple></label>
+        <ul class="flist" id="mergeList" aria-label="Files to merge"></ul>
+        <button class="btn primary" id="pdfMergeBtn" type="button">Merge PDFs</button>
+        <p class="status" id="pdfMergeStatus" aria-live="polite"></p>
+      </article>
+      <article class="card">
+        <h3>Extract / split PDF</h3>
+        <p>Save selected pages as a new PDF. Use page numbers and ranges, for example 1-3, 5, 8-10.</p>
+        <label class="drop" id="pdfExtractDrop">Drop a PDF here or click to choose<span class="fname"></span><input id="pdfExtractFile" type="file" accept="application/pdf,.pdf"></label>
+        <div class="field"><label for="pdfPageRange">Pages to extract</label><input id="pdfPageRange" type="text" placeholder="Example: 1-3, 5, 8-10"></div>
+        <button class="btn primary" id="pdfExtractBtn" type="button">Extract pages</button>
+        <p class="status" id="pdfExtractStatus" aria-live="polite"></p>
+      </article>
+      <article class="card">
+        <h3>Rotate PDF pages</h3>
+        <p>Rotate every page in the selected PDF by 90, 180 or 270 degrees.</p>
+        <label class="drop" id="pdfRotateDrop">Drop a PDF here or click to choose<span class="fname"></span><input id="pdfRotateFile" type="file" accept="application/pdf,.pdf"></label>
+        <div class="field"><label for="pdfRotateAngle">Rotation angle</label><select id="pdfRotateAngle"><option value="90">90° clockwise</option><option value="180">180°</option><option value="270">270° clockwise</option></select></div>
+        <button class="btn primary" id="pdfRotateBtn" type="button">Rotate PDF</button>
+        <p class="status" id="pdfRotateStatus" aria-live="polite"></p>
+      </article>
+      <article class="card">
+        <h3>Compress PDF</h3>
+        <p>Reduce file size by converting pages to optimized images. This can remove selectable text, links, forms and accessibility data.</p>
+        <label class="drop" id="pdfCompressDrop">Drop a PDF here or click to choose<span class="fname"></span><input id="pdfCompressFile" type="file" accept="application/pdf,.pdf"></label>
+        <div class="field"><label for="pdfTargetSize">Target file size (MB)</label><input id="pdfTargetSize" type="number" min="0.1" max="50" step="0.1" value="1"></div>
+        <div class="prog" aria-hidden="true"><i id="pdfCompressBar"></i></div>
+        <button class="btn primary" id="pdfCompressBtn" type="button">Compress PDF</button>
+        <p class="status" id="pdfCompressStatus" aria-live="polite"></p>
+      </article>
+    </div>
+    <p class="note">Privacy: files are processed in your browser and are not uploaded by these tools. Very large or password-protected PDFs may fail depending on your device memory and browser. Compression to a specific size is best-effort; the final size depends on the PDF contents.</p>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

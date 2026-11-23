@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>Contact | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contact">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="contact">
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Contact</div>
+    <h1>Let's connect.</h1>
+    <p class="lead">Have a professional enquiry or would like to connect? Feel free to reach out.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="contact-grid">
+      <div class="card">
+        <div class="cline"><div><small>Email</small><span class="mono" id="emailText">easternkamal@gmail.com</span></div><button class="btn small" type="button" data-copy="emailText" data-label="Copy">Copy</button></div>
+        <div class="cline"><div><small>Location</small>Itahari, Koshi Province, Nepal</div></div>
+        <div class="cline"><div><small>Availability</small>Available for professional connections</div></div>
+              </div>
+      <div class="card">
+        <h3>Prepare a message</h3>
+        <p style="margin-bottom:16px">Write a short note and copy it, or open it in your email app.</p>
+        <div class="grid-2" style="gap:12px">
+          <div class="field"><label for="cName">Your name</label><input id="cName" type="text" autocomplete="name"></div>
+          <div class="field"><label for="cTopic">Topic</label><select id="cTopic"><option>Professional enquiry</option><option>Banking and credit question</option><option>Networking</option><option>Other</option></select></div>
+        </div>
+        <div class="field" style="margin-top:12px"><label for="msg">Message</label><textarea id="msg" style="min-height:110px"></textarea></div>
+        <div class="field" style="margin-top:12px"><label for="draftOut">Draft</label><textarea id="draftOut" readonly style="min-height:130px"></textarea></div>
+        <div class="row" style="margin-top:14px"><button class="btn primary" id="copyDraft" type="button">Copy draft</button><a class="btn" id="mailLink" href="mailto:easternkamal@gmail.com">Open in email app</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

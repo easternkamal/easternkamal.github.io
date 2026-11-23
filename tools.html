@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>Tools | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="tools">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="tools">
+<div class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Utilities</div>
+    <h1>Tools for everyday banking and paperwork.</h1>
+    <p class="lead">Seven free utilities that run in your browser. Press <kbd>Ctrl</kbd> <kbd>K</kbd> from any page to jump between them.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="hub">
+      <a class="card" href="emi.html"><span class="num">01</span><h3>EMI calculator</h3><p>Monthly instalment, total interest, repayment chart and amortization schedule.</p><span class="go">Open →</span></a>
+      <a class="card" href="nepali.html"><span class="num">02</span><h3>Nepali Unicode</h3><p>Romanized to Devanagari and back, plus amount in words and Nepali numerals.</p><span class="go">Open →</span></a>
+      <a class="card" href="date.html"><span class="num">03</span><h3>Date converter</h3><p>Convert English (AD) dates to Bikram Sambat (BS) and back.</p><span class="go">Open →</span></a>
+      <a class="card" href="land.html"><span class="num">04</span><h3>Land converter</h3><p>Ropani, Aana, Paisa, Daam, Bigha, Kattha, Dhur, square metres and square feet.</p><span class="go">Open →</span></a>
+      <a class="card" href="pdf.html"><span class="num">05</span><h3>PDF tools</h3><p>Merge, extract pages, rotate and compress PDFs without uploading them.</p><span class="go">Open →</span></a>
+      <a class="card" href="gold.html"><span class="num">06</span><h3>Gold rate</h3><p>Value any weight of gold or silver from today's FENEGOSIDA rate, with a budget calculator.</p><span class="go">Open →</span></a>
+      <a class="card" href="qr.html"><span class="num">07</span><h3>Bank QR generator</h3><p>Bank account QR codes for Nepali banks, with a printable card and a QR image decoder.</p><span class="go">Open →</span></a>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

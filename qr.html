@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>Bank QR Generator | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="qr">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="qr">
+<div class="wrap">
+  <nav class="toolnav" aria-label="Tools"><a href="tools.html">All tools</a><a href="emi.html">EMI</a><a href="nepali.html">Nepali Unicode</a><a href="date.html">Dates</a><a href="land.html">Land</a><a href="pdf.html">PDF</a><a href="gold.html">Gold</a><a href="qr.html" aria-current="page">Bank QR</a></nav>
+  <div class="page-head">
+    <div class="eyebrow">Payments utility</div>
+    <h1>Nepal bank account QR generator</h1>
+    <p class="lead">Turn a bank account into a QR code with a branded card you can print or share. Everything is generated in your browser and nothing is sent to a server.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="qrlay">
+      <div class="card inputs">
+        <div>
+          <div class="lbl" style="margin-bottom:8px">1. QR format</div>
+          <div class="modegrid" role="group" aria-label="QR format">
+            <button type="button" class="modeopt" id="modeJson" aria-pressed="true"><b>Bank transfer JSON</b><span>Account number, name and bank code as a small JSON object.</span></button>
+            <button type="button" class="modeopt" id="modeEmv" aria-pressed="false"><b>NepalQR / EMV TLV</b><span>EMV merchant-presented layout with a CRC-16 check value.</span></button>
+          </div>
+        </div>
+        <div class="field"><label for="bankSelect">2. Bank or financial institution</label><select id="bankSelect"></select>
+          <div class="codes">SWIFT / BIC <b class="mono" id="dispSwift">-</b> · Clearing code <b class="mono" id="dispNchl">-</b></div></div>
+        <div class="grid-2" style="gap:12px">
+          <div class="field"><label for="accName">3. Account holder name</label><input id="accName" type="text" placeholder="e.g. RAM BAHADUR THAPA" autocomplete="off"></div>
+          <div class="field"><label for="accNo">4. Account number</label><input id="accNo" type="text" class="mono" inputmode="numeric" placeholder="e.g. 01234567890123" autocomplete="off"></div>
+        </div>
+        <div class="grid-2" style="gap:12px" id="emvOpts" hidden>
+          <div class="field"><label for="fixedAmt">Fixed amount in NPR (optional)</label><input id="fixedAmt" type="text" inputmode="decimal" placeholder="Leave blank for any amount" autocomplete="off"></div>
+          <div class="field"><label for="mCity">City (max 15)</label><input id="mCity" type="text" maxlength="15" value="KATHMANDU" autocomplete="off"></div>
+        </div>
+        <div class="row" style="gap:20px">
+          <label class="chk"><input type="checkbox" id="maskTog"> Mask middle digits on the card</label>
+          <label class="chk"><input type="checkbox" id="upTog" checked> Uppercase the name</label>
+        </div>
+        <div class="payload">
+          <div class="bar" style="margin:0 0 8px"><span class="lbl" style="color:#9fb0d6">Encoded QR payload</span><button class="btn small" id="copyPayload" type="button">Copy payload</button></div>
+          <pre id="payloadPreview"></pre>
+        </div>
+        <p class="note" style="margin:0"><b>Check before sharing.</b> The JSON and EMV layouts here are not confirmed against a bank's published specification, and the bank codes come from a list you supplied. Payment apps may not accept the codes. Test with a small transfer in your own banking app first.</p>
+      </div>
+
+      <div class="qside">
+        <div class="qcard" id="qcard">
+          <div class="qhead" id="qHead">
+            <div class="bar" style="margin:0"><span>SCAN TO PAY · NEPAL</span><span class="mono qbadge" id="qBadge">-</span></div>
+            <h2 id="qBank">Bank</h2>
+          </div>
+          <div class="qbody">
+            <div class="qframe"><canvas id="qrCanvas" width="440" height="440" role="img" aria-label="Generated bank QR code"></canvas></div>
+            <div class="qname" id="qName">ACCOUNT HOLDER NAME</div>
+            <div class="qno mono" id="qNo">00000000000000</div>
+            <div class="qamt" id="qAmt" hidden>NPR <span id="qAmtVal"></span></div>
+            <div class="qfoot">Mobile Banking · Fonepay · ConnectIPS</div>
+          </div>
+        </div>
+        <p class="status" id="qrErr" role="alert"></p>
+        <div class="row">
+          <button class="btn primary" id="dlCard" type="button">Download QR card (PNG)</button>
+          <button class="btn" id="dlPlain" type="button">Download plain QR</button>
+        </div>
+        <p class="status" id="qrStatus" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="card">
+      <h3>Verify or decode a QR image</h3>
+      <p style="margin-top:6px">Choose a QR image, such as one saved from your banking app, to see the text inside it. Decoding loads a small library, so it needs an internet connection.</p>
+      <label class="drop" id="qrDrop" style="margin-top:14px">Drop an image here or click to choose<span class="fname"></span><input id="qrFile" type="file" accept="image/*"></label>
+      <div class="res err" id="decErr" hidden></div>
+      <div class="payload" id="decBox" hidden style="margin-top:14px"><div class="lbl" style="color:#9fb0d6;margin-bottom:6px">Decoded text</div><pre id="decText"></pre></div>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

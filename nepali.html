@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional portfolio of Kamal Paudel: banking operations, credit and customer service.">
+<title>Nepali Tools | Kamal Paudel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="nepali">
+<header class="site-head wrap">
+  <div class="nav">
+    <a class="brand" href="index.html">KP<i>.</i></a>
+    <nav class="links" id="links" aria-label="Main navigation">
+      <a data-nav="home" href="index.html" data-kw="start portfolio">Home</a>
+      <a data-nav="about" href="about.html" data-kw="profile background">About</a>
+      <div class="dd">
+        <button class="ddbtn" id="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">Tools ▾</button>
+        <div class="ddmenu" id="ddMenu">
+          <a data-nav="tools" href="tools.html" data-kw="all hub">All tools<small>Overview of every utility</small></a>
+          <a data-nav="emi" href="emi.html" data-kw="loan interest instalment calculator">EMI Calculator<small>Loan instalments and schedule</small></a>
+          <a data-nav="nepali" href="nepali.html" data-kw="unicode devanagari romanized amount words numerals">Nepali Unicode<small>Converter and amount in words</small></a>
+          <a data-nav="date" href="date.html" data-kw="bikram sambat bs ad calendar">Date Converter<small>English and Nepali dates</small></a>
+          <a data-nav="land" href="land.html" data-kw="ropani aana bigha kattha dhur area">Land Converter<small>Ropani, Bigha, m² and ft²</small></a>
+          <a data-nav="pdf" href="pdf.html" data-kw="merge split rotate compress document">PDF Tools<small>Merge, extract, rotate, compress</small></a>
+          <a data-nav="gold" href="gold.html" data-kw="gold silver rate price tola fenegosida">Gold Rate<small>Gold and silver value calculator</small></a>
+          <a data-nav="qr" href="qr.html" data-kw="qr code bank account nepalqr fonepay swift decode">Bank QR<small>Account QR codes and decoder</small></a>
+        </div>
+      </div>
+      <a data-nav="contact" href="contact.html" data-kw="email location message">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="search-btn" id="palBtn" type="button" aria-label="Quick jump to a page"><span>Search</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">☾</button>
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">≡</button>
+    </div>
+  </div>
+</header>
+<main>
+<div class="view" data-view="nepali">
+<div class="wrap">
+  <nav class="toolnav" aria-label="Tools"><a href="tools.html">All tools</a><a href="emi.html">EMI</a><a href="nepali.html" aria-current="page">Nepali Unicode</a><a href="date.html">Dates</a><a href="land.html">Land</a><a href="pdf.html">PDF</a><a href="gold.html">Gold</a><a href="qr.html">Bank QR</a></nav>
+  <div class="page-head">
+    <div class="eyebrow">Nepali language utilities</div>
+    <h1>Nepali Unicode converter</h1>
+    <p class="lead">Type Nepali using English letters and convert it to Devanagari Unicode, or convert Unicode text back to a basic Roman transliteration.</p>
+  </div>
+  <section class="block" style="padding-top:28px">
+    <div class="card">
+      <div class="bar">
+        <div class="seg" role="group" aria-label="Conversion direction">
+          <button id="toUnicodeMode" type="button" aria-pressed="true">Romanized → Unicode</button>
+          <button id="toRomanMode" type="button" aria-pressed="false">Unicode → Romanized</button>
+        </div>
+        <span class="tag" id="modeHint">Example: namaste → नमस्ते</span>
+      </div>
+      <div class="conv">
+        <div class="field"><label for="unicodeInput" id="inputLabel">Type in English (Romanized Nepali)</label><textarea id="unicodeInput" spellcheck="false"></textarea></div>
+        <div class="field"><label for="unicodeOutput" id="outputLabel">Nepali Unicode output</label><textarea id="unicodeOutput" class="deva" readonly placeholder="Converted text appears here"></textarea></div>
+      </div>
+      <div class="examples"><span class="lbl">Try:</span>
+        <button type="button" data-ex="namaste">namaste</button><button type="button" data-ex="dhanyabad">dhanyabad</button><button type="button" data-ex="kathmandu">kathmandu</button><button type="button" data-ex="sanchai">sanchai</button>
+      </div>
+      <div class="bar" style="margin:18px 0 0">
+        <div class="row">
+          <button class="btn primary" id="copyUnicode" type="button">Copy output</button>
+          <button class="btn" id="swapBtn" type="button">Swap direction</button>
+          <button class="btn" id="clearUnicode" type="button">Clear</button>
+        </div>
+        <span class="lbl" id="charCount">0 characters</span>
+      </div>
+      <p class="note">This is a built-in, offline phonetic converter and does not send your text to a server. Romanized spelling can vary, so review the result before using it in official documents. It is not a legacy Preeti-font converter.</p>
+    </div>
+  </section>
+  <section class="block" style="padding-top:0">
+    <div class="eyebrow">Banking helper</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 20px">Amount in words and Nepali numerals</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="field"><label for="amtIn">Amount in NPR</label><input id="amtIn" type="text" inputmode="decimal" value="1,250,000.50" autocomplete="off"></div>
+        <p class="note">Up to two decimal places (paisa). Words follow the lakh and crore system.</p>
+      </div>
+      <div class="card" style="display:grid;gap:12px" aria-live="polite">
+        <div class="out-box"><b>In words</b><div id="amtWords">-</div></div>
+        <div class="out-box"><b>Nepali numerals</b><div id="amtDeva" class="deva-out">-</div></div>
+        <div class="out-box"><b>Lakh/crore grouping</b><div id="amtGroup" class="mono">-</div></div>
+        <div><button class="btn small" id="copyWords" type="button">Copy words</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kamal Paudel. All rights reserved.</span>
+    <nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  </div>
+</footer>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Quick jump">
+  <div class="pal-box"><input id="palIn" type="text" placeholder="Jump to a page or tool…" autocomplete="off" aria-label="Search pages"><ul class="pal-list" id="palList"></ul></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
